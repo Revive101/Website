@@ -1,0 +1,5 @@
+User-agent: *
+Crawl-delay: 5
+Disallow: /cgi-bin/
+
+Sitemap: https://revive101.de/sitemap.xml

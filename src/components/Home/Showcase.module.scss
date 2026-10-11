@@ -1,0 +1,32 @@
+@use "@/styles/variables.scss" as *;
+
+.showcaseContent {
+  position: relative;
+  width: 100%;
+  max-width: $max-width;
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-inline: auto;
+  z-index: 1;
+  text-align: center;
+
+  .videoWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 1.5rem;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+}

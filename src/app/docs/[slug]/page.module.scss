@@ -1,0 +1,273 @@
+@use "@/styles/variables.scss" as *;
+
+$color-canvas-default: #0d1117;
+$color-canvas-subtle: #161b22;
+$color-border-default: #30363d;
+$color-border-muted: #21262d;
+$text: #f8fafc;
+$indent: 2rem;
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+.doc {
+  line-height: 1.7;
+  background-color: #0a0a0aa4;
+  backdrop-filter: blur(10px);
+  padding: 0 1rem 0.5rem $indent;
+  border-radius: 0.75rem;
+
+  a {
+    color: $aurorium;
+    text-underline-offset: 3px;
+    transition:
+      color $transition,
+      text-decoration $transition;
+
+    &:hover {
+      text-decoration: underline;
+      color: $aurorium-hover;
+    }
+  }
+
+  :global(.heading-anchor) {
+    margin-right: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.15s;
+
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
+
+  h1:hover :global(.heading-anchor),
+  h2:hover :global(.heading-anchor),
+  h3:hover :global(.heading-anchor),
+  h4:hover :global(.heading-anchor) {
+    opacity: 1;
+  }
+
+  h2 {
+    margin: 2.5rem 0 0.75rem;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: $text;
+    text-wrap: balance;
+  }
+
+  h3 {
+    margin: 1.8rem 0 0.5rem;
+    font-size: 1.2rem;
+    color: $text;
+  }
+
+  h4 {
+    margin: 1.4rem 0 0.4rem;
+    font-size: 1rem;
+    color: $text;
+  }
+
+  > :is(h1, h2, h3, h4) {
+    margin-left: calc(-1 * $indent);
+  }
+
+  // ----- lists -----
+  ul,
+  ol {
+    margin: 0 0 1rem;
+    padding-left: 1.5rem;
+    max-width: 100ch;
+  }
+
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+  ul ul {
+    list-style: circle;
+  }
+
+  li > ul,
+  li > ol {
+    margin: 0;
+  }
+
+  // task lists: - [x] done / - [ ] not yet
+  :global(.contains-task-list) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 0.35rem 1.5rem;
+    max-width: none;
+    padding: 0;
+    list-style: none;
+  }
+
+  :global(.task-list-item) {
+    margin: 0;
+
+    input {
+      display: none;
+    }
+
+    &::before {
+      content: "✓";
+      margin-right: 0.5rem;
+      color: #4ade80;
+    }
+
+    &:has(input:not(:checked))::before {
+      content: "-";
+      color: #f87171;
+    }
+  }
+
+  // ----- Tables -----
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 16px;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  tr {
+    background-color: $color-canvas-default;
+    border-top: 1px solid $color-border-muted;
+  }
+
+  tr:nth-child(2n) {
+    background-color: $color-canvas-subtle;
+  }
+
+  td,
+  th {
+    padding: 6px 13px;
+    border: 1px solid $color-border-default;
+  }
+
+  th {
+    font-weight: 600;
+  }
+
+  table img {
+    background-color: transparent;
+  }
+
+  // ----- plain blockquotes
+  blockquote {
+    margin: 1.2rem 0;
+    padding: 0.6rem 1rem;
+    max-width: 100ch;
+    border-left: 3px solid #94a3b8;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background: rgb(255 255 255 / 4%);
+
+    > :first-child {
+      margin-top: 0;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    color: $imlight;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    max-width: 100ch;
+  }
+
+  hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid rgb(255 255 255 / 30%);
+  }
+
+  // GitHub alert blockquotes
+  :global(.markdown-alert) {
+    padding: 1rem;
+    border: 1px solid var(--alert-border);
+    border-left: 4px solid var(--alert-accent);
+    background: var(--alert-background);
+  }
+
+  :global(.markdown-alert-note) {
+    --alert-accent: #60a5fa;
+    --alert-border: rgb(96 165 250 / 25%);
+    --alert-background: rgb(96 165 250 / 10%);
+  }
+
+  :global(.markdown-alert-tip) {
+    --alert-accent: #4ade80;
+    --alert-border: rgb(74 222 128 / 25%);
+    --alert-background: rgb(74 222 128 / 10%);
+  }
+
+  :global(.markdown-alert-important) {
+    --alert-accent: #a78bfa;
+    --alert-border: rgb(167 139 250 / 25%);
+    --alert-background: rgb(167 139 250 / 10%);
+  }
+
+  :global(.markdown-alert-warning) {
+    --alert-accent: #fbbf24;
+    --alert-border: rgb(251 191 36 / 25%);
+    --alert-background: rgb(251 191 36 / 10%);
+  }
+
+  :global(.markdown-alert-caution) {
+    --alert-accent: #f87171;
+    --alert-border: rgb(248 113 113 / 25%);
+    --alert-background: rgb(248 113 113 / 10%);
+  }
+
+  .adjacent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .doc {
+    padding: 0 1rem 0.5rem 0.5rem;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+    }
+    h4 {
+      font-size: 1.1rem;
+    }
+    h5 {
+      font-size: 1rem;
+    }
+    h6 {
+      font-size: 0.9rem;
+    }
+  }
+}

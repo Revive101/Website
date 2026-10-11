@@ -1,0 +1,160 @@
+@use "sass:color";
+@use "@/styles/variables.scss" as *;
+
+$page-bg: #020617;
+$text: #f8fafc;
+$muted: #94a3b8;
+$muted-light: #cbd5e1;
+
+$slate-950: #0f172a;
+
+.heroContent {
+  width: 100%;
+  max-width: $max-width;
+  min-height: 100svh;
+  margin-inline: auto;
+  z-index: 1;
+  text-align: center;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+  position: relative;
+
+  h1 {
+    margin: 0 0 2rem;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    max-width: 48rem;
+    margin: 1rem auto 2.5rem;
+    color: $slate-400;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .heroActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 0.75rem;
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      gap: 0.5rem; // Gap between icon and text
+      transition:
+        transform $transition,
+        background $transition,
+        box-shadow $transition,
+        border-color $transition;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-4px);
+      }
+
+      &.primaryButton {
+        background-color: #8b5cf6;
+
+        &:hover {
+          box-shadow: 0 0 30px color.change($aurorium-hover, $alpha: 0.3);
+          background-color: $aurorium-hover;
+        }
+
+        &:active {
+          transform: translateY(0);
+          background-color: #8b5cf6;
+          box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+        }
+      }
+
+      &.secondaryButton {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+
+        svg {
+          transition: transform $transition;
+        }
+
+        &:hover {
+          background-color: $empty-button-hover;
+
+          svg {
+            transform: translateX(4px);
+          }
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .heroMain {
+    display: grid;
+    place-items: center;
+  }
+
+  .scrollIndicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: grid;
+    place-items: center;
+
+    animation: scrollBounce 2s ease-in-out infinite;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+@media (max-width: 640px) {
+  .heroContent {
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      padding-inline: 1rem;
+    }
+
+    .heroActions {
+      flex-direction: column;
+      width: 100%;
+      padding-inline: 1rem;
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

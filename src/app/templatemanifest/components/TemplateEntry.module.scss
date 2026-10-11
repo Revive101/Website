@@ -1,0 +1,33 @@
+@use "@/styles/variables.scss" as *;
+
+.templateEntry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  .templateId {
+    font-size: 0.875rem;
+    color: #94a3b8;
+  }
+
+  .templateName {
+    font-size: 1rem;
+    color: #f8fafc;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+  }
+
+  &.selected {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}

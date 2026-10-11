@@ -1,0 +1,50 @@
+---
+title: Run your own Imlight server
+description: Learn how to install Imlight, configure an Aurorium instance, and connect your Wizard101 client to your own private server.
+group: Start here
+order: 1
+tags: [imlight, aurorium, installation, setup, private-server, wizard101, tutorial]
+---
+
+# Run your own Imlight server
+
+Imlight is an independent private server **framework** for Wizard101, written entirely in C#. This guide covers what you need to set up, how everything fits together and how to play on your own server.
+
+> [!IMPORTANT]
+> Imlight is a framework for building a private server, so do not expect a full game experience out of the box.
+
+---
+
+## Prerequisites
+
+To run the server, you need to have .NET 10 Runtime installed.
+You can download the latest version of .NET 10 Runtime [**HERE**](https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.12/dotnet-runtime-10.0.12-win-x64.exe).
+
+## Installation
+
+1. Download the latest `installer.exe` from the [Imlight release page](https://github.com/Revive101/Imlight/releases).
+2. Run the installer and follow the instructions.
+
+> [!TIP]
+> The installation program will prompt you to choose whether you want to select the public Aurorium instance or host Aurorium yourself. **We recommend that people without programming experience use the public instance.**
+
+3. When the installation is complete, go to the installation directory of Revive101, open the `Imlight/` folder and double-click `start.cmd`. This will start Imlight!
+
+> [!NOTE]
+> **Optional:** If you chose to host your own Aurorium instance, also run `aurorium.exe` inside the `Aurorium` folder. The first time you run it, Aurorium downloads all necessary files. This can take a while, depending on your internet connection.
+
+## Connecting to your server
+
+Once your server is running (Indicated by the `Imlight may now be connected to` message), point the game client at it:
+
+1. Go to your Wizard101 installation directory and open the `Bin/` folder. Inside you will find `WizardGraphicalClient.exe`
+2. Right-click `WizardGraphicalClient.exe` and select `Create shortcut`.
+3. Right-click the newly created shortcut and select `Properties`. In the `Target` field, add the fllowing to the end of the existing text. This makes the client connect to your local server. See [this screenshot](https://i.imgur.com/rYNIUPs.png) for reference.
+
+```cmd
+-L 127.0.0.1: 12000
+```
+
+4. Click `Apply`, then `Ok` to save the changes.
+5. Double-click the shortcut to launch the client and connect to your server.
+6. The default credentials are `admin` and `compsci`.

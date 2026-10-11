@@ -1,0 +1,37 @@
+@use "@/styles/variables.scss" as *;
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  user-select: none;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0 0 0 1rem;
+
+    li {
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .active {
+        color: $aurorium;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+}

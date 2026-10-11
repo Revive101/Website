@@ -1,0 +1,59 @@
+@use "@/styles/variables.scss" as *;
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 1.5rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 0.75rem;
+
+  transition:
+    transform $transition,
+    background $transition,
+    box-shadow $transition,
+    border-color $transition;
+
+  user-select: none;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 0.75rem;
+    background: radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), rgba(139, 92, 246, 1), transparent 100%);
+    opacity: var(--flashlight-opacity);
+    transition: opacity 300ms ease;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  h2 {
+    font-size: clamp(1.125rem, 2vw, 1.2rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    text-align: left;
+    font-size: clamp(0.875rem, 1vw, 0.95rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .featureCard {
+    padding: 0.75rem;
+
+    h2 {
+      font-size: clamp(1.125rem, 2vw, 1.125rem);
+    }
+  }
+}
