@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Partia
         locale: "en_US",
         type: "article",
       },
-    };
+    } as Metadata;
   }
 
   return {
@@ -62,8 +62,11 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Partia
       siteName: SITE.name,
       locale: "en_US",
       type: "article",
+      tags: doc.tags,
+      section: doc.group,
+      //TODO: publishedTime, modifiedTime
     },
-  };
+  } as Metadata;
 }
 
 export default async function DocPage({ params }: DocPageProps) {
