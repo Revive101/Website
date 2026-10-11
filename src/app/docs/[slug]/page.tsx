@@ -22,11 +22,6 @@ export async function generateStaticParams() {
   return (await getAllDocs()).map((doc) => ({ slug: doc.slug }));
 }
 
-export async function getAllTags() {
-  const docs = await getAllDocs();
-  return [...new Set(docs.flatMap((d) => d.tags))].sort();
-}
-
 export async function generateMetadata({ params }: DocPageProps): Promise<Partial<Metadata>> {
   const { slug } = await params;
   const doc = await getDoc(slug);
