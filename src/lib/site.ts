@@ -1,4 +1,4 @@
-export const SITE_URL = "https://revive101.de";
+export const SITE_URL =  process.env.NEXT_PUBLIC_SITE_URL || "https://revive101.de";
 
 export const SITE = {
   name: "Revive101",

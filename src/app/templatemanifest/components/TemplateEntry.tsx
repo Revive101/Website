@@ -8,10 +8,15 @@ export interface TemplateEntryProps {
 }
 
 export default function TemplateEntry({ id, name, isSelected, onClick }: TemplateEntryProps) {
+  const filename = name
+    .split("/")
+    .pop()
+    ?.replace(/\.[^.]+$/, "");
+
   return (
     <div className={`${styles.templateEntry} ${isSelected ? styles.selected : ""}`} onClick={onClick}>
       <span className={styles.templateId}>{id}</span>
-      <span className={styles.templateName}>{name}</span>
+      <span className={styles.templateName}>{filename}</span>
     </div>
   );
 }

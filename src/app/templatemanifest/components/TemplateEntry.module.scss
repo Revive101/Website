@@ -3,7 +3,7 @@
 .templateEntry {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.05);
@@ -16,7 +16,7 @@
   }
 
   .templateName {
-    font-size: 1rem;
+    font-size: 0.7rem;
     color: #f8fafc;
   }
 
