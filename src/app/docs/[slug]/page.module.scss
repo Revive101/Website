@@ -236,6 +236,19 @@ html {
     align-items: center;
     width: 100%;
   }
+
+  // ----- code blocks -----
+  :not(pre) > code {
+    background: rgba(148, 163, 184, 0.12);
+    color: #c4b5fd;
+    padding: 0.15em 0.4em;
+    border-radius: 0.3rem;
+    font-family: monospace;
+    font-size: 0.95em;
+
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
 }
 
 @media (max-width: 768px) {
