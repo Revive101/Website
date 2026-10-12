@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Partia
   }
 
   return {
-    title: doc.title, // becomes "Getting started | Revive101"
+    title: doc.title,
     description,
     keywords: [...SITE.keywords, ...(doc.tags ?? [])],
     alternates: { canonical: url },
