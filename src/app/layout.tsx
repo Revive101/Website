@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
 import "@/styles/globals.scss";
-import { SITE, SITE_URL } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 const lexendDeca = Lexend_Deca({
   variable: "--font-lexend-deca",
