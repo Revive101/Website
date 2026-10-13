@@ -25,7 +25,15 @@ export default function Header() {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${isMenuOpen ? styles.menuOpen : ""}`}>
       <div className={styles.container}>
         <a href="/" className={styles.logo}>
-          <Image src="/images/r101_logo.webp" alt="Revive101 Logo" className={styles.logoImg} width={32} height={32} /> Revive101
+          <Image
+            suppressHydrationWarning
+            src="/images/r101_logo.webp"
+            alt="Revive101 Logo"
+            className={styles.logoImg}
+            width={32}
+            height={32}
+          />{" "}
+          Revive101
         </a>
 
         <nav className={styles.desktopNav}>
