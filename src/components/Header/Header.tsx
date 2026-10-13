@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 
 const links = [
   { href: "/faq", label: "FAQ" },
@@ -24,7 +25,7 @@ export default function Header() {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${isMenuOpen ? styles.menuOpen : ""}`}>
       <div className={styles.container}>
         <a href="/" className={styles.logo}>
-          <img src="/images/r101_logo.png" alt="Revive101 Logo" className={styles.logoImg} /> Revive101
+          <Image src="/images/r101_logo.webp" alt="Revive101 Logo" className={styles.logoImg} width={32} height={32} /> Revive101
         </a>
 
         <nav className={styles.desktopNav}>
